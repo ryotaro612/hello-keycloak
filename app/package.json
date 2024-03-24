@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NEXT_PUBLIC_APP_NAME=App1 next dev",
-    "dev2": "NEXT_PUBLIC_APP_NAME=App2 next dev -p 3001",
+    "dev": "NEXT_PUBLIC_APP_NAME=App1 NEXT_AUTH_SECRET=secret1 CLIENT_ID=app1 CLIENT_SECRET=foobar1 next dev",
+    "dev2": "NEXT_PUBLIC_APP_NAME=App2 NEXT_AUTH_SECRET=secret2 CLIENT_ID=app2 CLIENT_SECRET=foobar2 next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

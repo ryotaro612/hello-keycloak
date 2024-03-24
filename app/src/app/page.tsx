@@ -1,18 +1,16 @@
 'use client';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import styles from './page.module.scss';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 
 async function resolveIdProvider(email: string) {
   const result = await fetch('/v1/idProviders', { method: 'POST', body: JSON.stringify({ email }) });
   return result.json();
 }
 
-export default function Home({ }) {
-
+function SignIn() {
   const [email, setEmail] = useState<string>('');
-
-  return <div className={styles.sso}>
+  return <>
     <div className={styles.keycloak}>
       <button onClick={() => signIn('keycloak')} className={styles.ssoButton}>Single-Sign On</button>
     </div>
@@ -26,11 +24,35 @@ export default function Home({ }) {
       </div>
       <button className={styles.idpHintButton} onClick={async () => {
         const { kc_idp_hint } = await resolveIdProvider(email);
-        signIn('keycloak', {}, {kc_idp_hint});
+        signIn('keycloak', {}, { kc_idp_hint });
       }}>
         Continue
       </button>
     </div>
-    {/* <button onClick={() => signIn('keycloak', {}, { kc_idp_hint: 'github' })}>Sign in</button> */}
+  </>
+}
+
+function SignOut({ userName }: { userName: string }) {
+  return <div className={styles.signOut}>
+    <span className={styles.greeting}>
+      Hello {userName}.
+    </span>
+    <button className={styles.signOutButton} onClick={() => { signOut() }}>
+      Sign out
+    </button>
+  </div>
+}
+export default function Home({ }) {
+  const session = useSession();
+  console.log(session);
+  let form: ReactNode;
+  const userName = session.data?.user?.name;
+  if (typeof userName == 'string') {
+    form = <SignOut userName={userName} />
+  } else {
+    form = <SignIn />;
+  }
+  return <div className={styles.sso}>
+    {form}
   </div>
 }

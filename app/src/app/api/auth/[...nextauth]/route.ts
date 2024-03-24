@@ -2,12 +2,12 @@ import NextAuth from 'next-auth';
 import Keycloak from 'next-auth/providers/keycloak';
 
 const handler = NextAuth({
-    secret: 'say_lalisa_love_me_lalisa_love_me_hey',
+    secret: process.env.NEXT_AUTH_SECRET,
     providers: [
         Keycloak({
-            clientId: 'app1',
-            clientSecret: 'foobar',
-            issuer: 'http://localhost:8080/realms/sample',
+            clientId: process.env.CLIENT_ID as string,
+            clientSecret: process.env.CLIENT_SECRET as string,
+            issuer: process.env.NEXT_AUTH_ISSUER_BASE_URL,
         })
     ]
 });
