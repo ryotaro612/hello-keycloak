@@ -1,5 +1,6 @@
 import 'normalize.css';
 import type { Metadata } from 'next';
+import styles from './layout.module.scss';
 import { Inter } from 'next/font/google';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
@@ -21,7 +22,7 @@ export default async function RootLayout({
   console.log(session, 'session');
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} ${styles.container}`}>
         <h1>{applicationName}</h1>
         {children}
       </body>

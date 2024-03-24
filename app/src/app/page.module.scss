@@ -1,12 +1,78 @@
-.sso {
-    $border-color: #E5E5E5;
-    border: 1px solid $border-color;
-}
+@import './colors.scss';
 
-.ssoButton {
-    border: 1px solid #191919; 
-    border-radius: 5px;
-    color: #191919;
-    cursor: pointer;
+.sso {
+    $borderColor: #E5E5E5;
+    border: 1px solid $borderColor;
+    width: fit-content;
     padding: 8px;
+
+    .keycloak {
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid $borderColor;
+        padding: 0 0 8px 0;
+        margin-bottom: 8px;
+
+        .ssoButton {
+            border: 1px solid #191919;
+            height: calc(32rem/16);
+            font-size: calc(16rem / 16);
+            border-radius: 5px;
+            color: $textColor;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+    }
+
+    .idpHint {
+        padding: 8px 0 0 0;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+
+        .description {
+            color: $textColor;
+            font-size: calc(16rem / 16);
+            margin: 0 0 16px 0;
+        }
+
+        .email {
+            display: flex;
+            flex-flow: column;
+
+            .emailDescription {
+                color: $textColor;
+                margin: 0 0 8px 0;
+            }
+
+            .emailInput {
+                border: 1px solid #E5E5E5;
+                color: $textColor;
+                height: calc(32rem/16);
+
+                &::placeholder {
+                    color: #7F7F7F;
+                }
+
+                &:focus {
+                  outline: 1px solid;
+                  border-radius: 2px;
+                  outline-color: #5361C5;
+                }
+            }
+        }
+
+        .idpHintButton {
+            margin: 8px 0 0 0;
+            border: 1px solid #191919;
+            height: calc(32rem/16);
+            font-size: calc(16rem / 16);
+            border-radius: 5px;
+            color: $textColor;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+    }
 }
