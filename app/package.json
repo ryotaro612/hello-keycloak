@@ -1,9 +1,10 @@
 {
-  "name": "app1",
+  "name": "app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NEXT_PUBLIC_APP_NAME=App1 next dev",
+    "dev2": "NEXT_PUBLIC_APP_NAME=App2 next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
