@@ -10,3 +10,5 @@ export const authOptions = {
         })
   ], // rest of your config
 } satisfies NextAuthOptions ;
+
+//export const { handlers, auth, signIn, signOut, handler } = NextAuth(authOptions);
