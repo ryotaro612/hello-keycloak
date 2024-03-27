@@ -24,7 +24,8 @@ function SignIn() {
       </div>
       <button className={styles.idpHintButton} onClick={async () => {
         const { kc_idp_hint } = await resolveIdProvider(email);
-        signIn('keycloak', {}, { kc_idp_hint });
+        signIn('keycloak', {
+        }, { kc_idp_hint });
       }}>
         Continue
       </button>

@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NEXT_PUBLIC_APP_NAME=App1 NEXT_AUTH_SECRET=secret1 CLIENT_ID=app1 CLIENT_SECRET=foobar1 next dev",
-    "dev2": "NEXT_PUBLIC_APP_NAME=App2 NEXT_AUTH_SECRET=secret2 CLIENT_ID=app2 CLIENT_SECRET=foobar2 next dev -p 3001",
+    "dev": "NEXT_AUTH_ISSUER_BASE_URL=http://localhost:8080/realms/sample NEXT_PUBLIC_APP_NAME=App1 NEXTAUTH_SECRET=secret1 CLIENT_ID=app1 CLIENT_SECRET=foobar1 next dev",
+    "dev2": "NEXT_AUTH_ISSUER_BASE_URL=http://localhost:8080/realms/sample2 NEXTAUTH_URL=http://localhost:3001 NEXT_PUBLIC_APP_NAME=App2 NEXTAUTH_SECRET=secret2 CLIENT_ID=app2 CLIENT_SECRET=foobar2 next dev -p 3001",
     "build": "next build",
-    "start": "next start",
+    "start": "NEXT_AUTH_ISSUER_BASE_URL=http://localhost:8080/realms/sample NEXT_PUBLIC_APP_NAME=App1 NEXTAUTH_SECRET=secret1 CLIENT_ID=app1 CLIENT_SECRET=foobar1 next start",
+    "start2": "NEXT_AUTH_ISSUER_BASE_URL=http://localhost:8080/realms/sample2 NEXTAUTH_URL=http://localhost:3001 NEXT_PUBLIC_APP_NAME=App2 NEXTAUTH_SECRET=secret2 CLIENT_ID=app2 CLIENT_SECRET=foobar2 next start -p 3001",
     "lint": "next lint"
   },
   "dependencies": {
